@@ -1,1 +1,7 @@
+{
+  "products": [
+    {"id":1,"category":"Home Textiles","name":"Cotton Bed Linen Set","price":2499,"vendors":[{"name":"Omdeo Packaging","location":"Hajipur","price":2299,"rating":4.8},{"name":"Adarsh Packaging","location":"Patna","price":2399,"rating":4.5}]},
+    {"id":2,"category":"Technical Textiles","name":"FIBC Bulk Bags","price":899,"vendors":[{"name":"Bankey Bihari","location":"Patna","price":849,"rating":4.7},{"name":"Mehra's Packaging","location":"Danapur","price":879,"rating":4.3}]}
+  ]
+}
 
