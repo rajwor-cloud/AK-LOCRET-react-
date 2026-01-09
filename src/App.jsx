@@ -15,23 +15,18 @@ const App = () => {
   const [filters, setFilters] = useState({ location: 'Patna', category: 'All', price: [0, 5000] });
 
   useEffect(() => {
-    // Load 500 mock products
-    fetch('/data/products.json')
-      .then(res => res.json())
-      .then(data => {
-        const expandedProducts = Array.from({length: 500}, (_, i) => ({
-          id: i + 1,
-          category: ['Home Textiles', 'Technical Textiles', 'Packaging', 'Apparel'][i % 4],
-          name: `Product ${i + 1}`,
-          price: Math.floor(Math.random() * 4900) + 100,
-          vendors: [
-            {name: 'Omdeo Packaging', location: 'Hajipur', price: 0, rating: 4.8},
-            {name: 'Adarsh Packaging', location: 'Patna', price: 0, rating: 4.5}
-          ]
-        }));
-        setProducts(expandedProducts);
-        setFilteredProducts(expandedProducts);
-      });
+    const expandedProducts = Array.from({length: 500}, (_, i) => ({
+      id: i + 1,
+      category: ['Home Textiles', 'Technical Textiles', 'Packaging', 'Apparel'][Math.floor(Math.random() * 4)],
+      name: `Product ${i + 1}`,
+      price: Math.floor(Math.random() * 4900) + 100,
+      vendors: [
+        {name: 'Omdeo Packaging', location: 'Hajipur', price: 0, rating: 4.8},
+        {name: 'Adarsh Packaging', location: 'Patna', price: 0, rating: 4.5}
+      ]
+    }));
+    setProducts(expandedProducts);
+    setFilteredProducts(expandedProducts);
   }, []);
 
   const handleUnlockVendor = (productId) => {
@@ -48,16 +43,12 @@ const App = () => {
     <div className="App">
       <Header />
       <Filters filters={filters} setFilters={setFilters} />
-      <ProductList 
-        products={filteredProducts}
-        unlockedVendors={unlockedVendors}
-        onUnlock={handleUnlockVendor}
-      />
+      <ProductList products={filteredProducts} onUnlockVendor={handleUnlockVendor} unlockedVendors={unlockedVendors} />
       {selectedProduct && unlockedVendors[selectedProduct] && (
         <VendorCard productId={selectedProduct} />
       )}
-      <PaymentModal 
-        show={showPaymentModal}
+      <PaymentModal
+        isOpen={showPaymentModal}
         onClose={() => setShowPaymentModal(false)}
         onSuccess={handlePaymentSuccess}
         amount={10}
@@ -67,4 +58,3 @@ const App = () => {
 };
 
 export default App;
-
