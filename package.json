@@ -1,1 +1,19 @@
+{
+  "name": "locret-react",
+  "version": "2.0.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.8.0",
+    "react-icons": "^4.10.1",
+    "@razorpay/react-razorpay": "^1.0.0",
+    "lucide-react": "^0.263.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "vercel --prod"
+  }
+}
 
